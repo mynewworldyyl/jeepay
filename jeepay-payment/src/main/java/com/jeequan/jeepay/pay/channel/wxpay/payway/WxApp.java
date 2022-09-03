@@ -66,12 +66,11 @@ public class WxApp extends WxpayPaymentService {
         WxServiceWrapper wxServiceWrapper = configContextQueryService.getWxServiceWrapper(mchAppConfigContext);
         WxPayService wxPayService = wxServiceWrapper.getWxPayService();
         try {
+        	//调用微信统一下单服务
             WxPayAppOrderResult payResult = wxPayService.createOrder(req);
             JSONObject resJSON = (JSONObject) JSON.toJSON(payResult);
             resJSON.put("package", payResult.getPackageValue());
-
             res.setPayInfo(resJSON.toJSONString());
-
             // 支付中
             channelRetMsg.setChannelState(ChannelRetMsg.ChannelState.WAITING);
 

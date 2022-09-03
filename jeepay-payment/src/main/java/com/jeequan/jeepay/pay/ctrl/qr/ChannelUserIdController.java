@@ -109,7 +109,7 @@ public class ChannelUserIdController extends AbstractPayOrderController {
         //获取商户配置信息
         MchAppConfigContext mchAppConfigContext = configContextQueryService.queryMchInfoAndAppInfo(mchNo, appId);
 
-        //获取渠道用户ID
+        //获取渠道用户ID，就是微信openID
         String channelUserId = channelUserService.getChannelUserId(getReqParamJSON(), mchAppConfigContext);
 
         //同步跳转

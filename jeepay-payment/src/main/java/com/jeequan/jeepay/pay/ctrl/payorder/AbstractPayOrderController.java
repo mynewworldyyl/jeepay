@@ -109,7 +109,7 @@ public abstract class AbstractPayOrderController extends ApiController {
             String mchNo = bizRQ.getMchNo();
             String appId = bizRQ.getAppId();
 
-            // 只有新订单模式，进行校验
+            //只有新订单模式，进行校验
             if(isNewOrder && payOrderService.count(PayOrder.gw().eq(PayOrder::getMchNo, mchNo).eq(PayOrder::getMchOrderNo, bizRQ.getMchOrderNo())) > 0){
                 throw new BizException("商户订单["+bizRQ.getMchOrderNo()+"]已存在");
             }
@@ -306,7 +306,7 @@ public abstract class AbstractPayOrderController extends ApiController {
 
     /** 处理返回的渠道信息，并更新订单状态
      *  payOrder将对部分信息进行 赋值操作。
-     * **/
+     ***/
     private void processChannelMsg(ChannelRetMsg channelRetMsg, PayOrder payOrder){
 
         //对象为空 || 上游返回状态为空， 则无需操作

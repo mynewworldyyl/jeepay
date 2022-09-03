@@ -15,27 +15,27 @@
  */
 package com.jeequan.jeepay.pay.ctrl.qr;
 
-import com.alipay.api.AlipayApiException;
-import com.jeequan.jeepay.core.constants.CS;
-import com.jeequan.jeepay.core.entity.PayOrder;
-import com.jeequan.jeepay.core.exception.BizException;
-import com.jeequan.jeepay.core.utils.JeepayKit;
-import com.jeequan.jeepay.core.utils.SpringBeansUtil;
-import com.jeequan.jeepay.core.model.ApiRes;
-import com.jeequan.jeepay.pay.channel.IChannelUserService;
-import com.jeequan.jeepay.pay.ctrl.payorder.AbstractPayOrderController;
-import com.jeequan.jeepay.pay.rqrs.payorder.payway.AliJsapiOrderRQ;
-import com.jeequan.jeepay.pay.rqrs.payorder.payway.WxJsapiOrderRQ;
-import com.jeequan.jeepay.pay.service.ConfigContextQueryService;
-import com.jeequan.jeepay.pay.service.PayMchNotifyService;
-import com.jeequan.jeepay.pay.service.ConfigContextService;
-import com.jeequan.jeepay.pay.model.MchAppConfigContext;
-import com.jeequan.jeepay.service.impl.PayOrderService;
-import com.jeequan.jeepay.service.impl.SysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alipay.api.AlipayApiException;
+import com.jeequan.jeepay.core.constants.CS;
+import com.jeequan.jeepay.core.entity.PayOrder;
+import com.jeequan.jeepay.core.exception.BizException;
+import com.jeequan.jeepay.core.model.ApiRes;
+import com.jeequan.jeepay.core.utils.JeepayKit;
+import com.jeequan.jeepay.core.utils.SpringBeansUtil;
+import com.jeequan.jeepay.pay.channel.IChannelUserService;
+import com.jeequan.jeepay.pay.ctrl.payorder.AbstractPayOrderController;
+import com.jeequan.jeepay.pay.model.MchAppConfigContext;
+import com.jeequan.jeepay.pay.rqrs.payorder.payway.AliJsapiOrderRQ;
+import com.jeequan.jeepay.pay.rqrs.payorder.payway.WxJsapiOrderRQ;
+import com.jeequan.jeepay.pay.service.ConfigContextQueryService;
+import com.jeequan.jeepay.pay.service.PayMchNotifyService;
+import com.jeequan.jeepay.service.impl.PayOrderService;
+import com.jeequan.jeepay.service.impl.SysConfigService;
 
 /*
 * 聚合码支付二维码收银台controller
@@ -75,7 +75,7 @@ public class QrCashierController extends AbstractPayOrderController {
     }
 
     /**
-     * 获取userId
+     * 获取userId,如果是微信，取的是用户的openId，职果是支付宝，取的是支付宝的用户ID
      * **/
     @PostMapping("/channelUserId")
     public ApiRes channelUserId() throws Exception {
